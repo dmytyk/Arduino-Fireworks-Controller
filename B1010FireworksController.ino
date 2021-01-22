@@ -18,10 +18,10 @@
 #include <SPI.h>
 #include <WiFiNINA.h>
 
-#include "arduino_secrets.h" 
+#include "network_parameters.h"
 // enter your sensitive data in the Secret tab/arduino_secrets.h
-char ssid[] = SECRET_SSID;        // your network SSID (name)
-char pass[] = SECRET_PASS;        // your network password (use for WPA, or use as key for WEP)
+char myhomessid[] = MYHOME_SSID;        // your network SSID (network name)
+char myhomepassword[] = MYHOME_PASSWORD;    // your network password (network password)
 
 int currentrow = 0;               // current row selected to fire
 int selectrow = 0;                // row selected to fire
@@ -66,14 +66,14 @@ void setup() {
   while (status != WL_CONNECTED) {
 
     Serial.print("Attempting to connect to Network named: ");
-    Serial.println(ssid);                   // print the network name (SSID);
-
-    // Connect to WPA/WP17 network. Change this line if using open or WEP network:
-    status = WiFi.begin(ssid, pass);
+    Serial.println(myhomessid);                   // print the network name (SSID);
 
     // force a static IP address
-    WiFi.config(IPAddress(10, 0, 0, 99));
-    
+    WiFi.config(IPAddress(MYHOME_IP_OCT1, MYHOME_IP_OCT2, MYHOME_IP_OCT3, MYHOME_IP_OCT4));
+
+    // Connect to WPA/WP17 network. Change this line if using open or WEP network:
+    status = WiFi.begin(myhomessid, myhomepassword);
+
     // wait 10 seconds for connection flashing on board LED
     tryingWifiStatus();
   }
@@ -133,7 +133,7 @@ void printMacAddress(byte mac[]) {
 
 void printWifiStatus() {
   // print the SSID of the network you're attached to:
-  Serial.print("SSID: ");
+  Serial.print("MYHOMESSID: ");
   Serial.println(WiFi.SSID());
 
   // print your board's IP address:

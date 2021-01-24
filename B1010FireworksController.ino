@@ -19,6 +19,7 @@
 #include <WiFiNINA.h>
 
 #include "network_parameters.h"
+
 // enter your sensitive data in the Secret tab/arduino_secrets.h
 char myhomessid[] = MYHOME_SSID;        // your network SSID (network name)
 char myhomepassword[] = MYHOME_PASSWORD;    // your network password (network password)
@@ -30,62 +31,8 @@ String state = "INIT";            // user state
 int status = WL_IDLE_STATUS;
 WiFiServer server(80);
 
-void setup() {
-  // initialize digital pins.
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW); // LED off to indicate no wifi connection yet
-  pinMode(15, OUTPUT);    // set the pin mode, Row 1
-  pinMode(16, OUTPUT);    // set the pin mode, Row 2
-  pinMode(17, OUTPUT);    // set the pin mode, Row 3
-  pinMode(18, OUTPUT);    // set the pin mode, Row 4
-  pinMode(19, OUTPUT);    // set the pin mode, Row 5
-  pinMode(20, OUTPUT);    // set the pin mode, Row 6
-  pinMode(21, OUTPUT);    // set the pin mode, Row 7
-  pinMode(0, OUTPUT);     // set the pin mode, Row 8
-  pinMode(1, OUTPUT);     // set the pin mode, Row 9
-  pinMode(2, OUTPUT);     // set the pin mode, Row 10
-  pinMode(5, OUTPUT);     // set the pin mode, ARMED
-  pinMode(7, OUTPUT);     // set the pin mode, FIRE
-  allOff();  
-   
-  Serial.begin(9600);      // initialize serial communication
- 
-  // check for the WiFi module:
-  if (WiFi.status() == WL_NO_MODULE) {
-    Serial.println("Communication with WiFi module failed!");
-    // don't continue
-    while (true);
-  }
-
-  String fv = WiFi.firmwareVersion();
-  if (fv < WIFI_FIRMWARE_LATEST_VERSION) {
-    Serial.println("Please upgrade the firmware");
-  }
-
-  // attempt to connect to Wifi network:
-  while (status != WL_CONNECTED) {
-
-    Serial.print("Attempting to connect to Network named: ");
-    Serial.println(myhomessid);                   // print the network name (SSID);
-
-    // force a static IP address
-    WiFi.config(IPAddress(MYHOME_IP_OCT1, MYHOME_IP_OCT2, MYHOME_IP_OCT3, MYHOME_IP_OCT4));
-
-    // Connect to WPA/WP17 network. Change this line if using open or WEP network:
-    status = WiFi.begin(myhomessid, myhomepassword);
-
-    // wait 10 seconds for connection flashing on board LED
-    tryingWifiStatus();
-  }
-  
-  server.begin();                           // start the web server on port 80
-  printWifiStatus();                        // you're connected now, so print out the status
-
-  // LED on to indicate we have a wifi connection
-  digitalWrite(LED_BUILTIN, HIGH);
-}
-
-void tryingWifiStatus() {
+// flash the on board LED wihile we are waiting WiFi to connect
+void waitForWifi() {
     //delay 5 seconds
     for (int i = 0; i <= 5; i++) {
       digitalWrite(LED_BUILTIN, HIGH);
@@ -157,6 +104,16 @@ void printWifiStatus() {
   printMacAddress(mac);
 }
 
+void writeHeader(WiFiClient client) {
+  // send a standard http response header
+  // HTTP headers always start with a response code (e.g. HTTP/1.1 200 OK)
+  // and a content-type so the client knows what's coming, then a blank line:
+  client.println("HTTP/1.1 200 OK");
+  client.println("Content-type:text/html");
+  client.println("Connection:close");
+  client.println();
+}
+
 void writeResponse(WiFiClient client) {
   // send a standard http response header
   // HTTP headers always start with a response code (e.g. HTTP/1.1 200 OK)
@@ -184,7 +141,7 @@ void writeResponse(WiFiClient client) {
   client.println("</tr>");
     
   client.println("<tr>");      
-  client.println("<td style=\"text-align:center; font-size:125%;\">Select a Row to Fire (01-10),  Arm the Row,  Fire the Row:</td>");
+  client.println("<td style=\"text-align:center; font-size:125%;\">Select a Row to Fire (1-10),  Arm the Row,  Fire the Row:</td>");
   client.println("</tr>");
     
   client.println("<tr>");   
@@ -275,6 +232,65 @@ void writeResponse(WiFiClient client) {
   client.println("</html>");
 }
 
+void setup() {
+  // initialize digital pins
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW); // LED off to indicate no wifi connection yet
+  pinMode(15, OUTPUT);    // set the pin mode, Row 1
+  pinMode(16, OUTPUT);    // set the pin mode, Row 2
+  pinMode(17, OUTPUT);    // set the pin mode, Row 3
+  pinMode(18, OUTPUT);    // set the pin mode, Row 4
+  pinMode(19, OUTPUT);    // set the pin mode, Row 5
+  pinMode(20, OUTPUT);    // set the pin mode, Row 6
+  pinMode(21, OUTPUT);    // set the pin mode, Row 7
+  pinMode(0, OUTPUT);     // set the pin mode, Row 8
+  pinMode(1, OUTPUT);     // set the pin mode, Row 9
+  pinMode(2, OUTPUT);     // set the pin mode, Row 10
+  pinMode(5, OUTPUT);     // set the pin mode, ARMED
+  pinMode(7, OUTPUT);     // set the pin mode, FIRE
+  allOff();  
+
+  // turn on the serial port - we used this to trouble shoot the controller
+  // throughout the code you will see a numerous Serial.print and Serial.println commands
+  // they provide debug information for startup and normal operational information
+  Serial.begin(9600);      // initialize serial communication
+ 
+  // check for the WiFi module:
+  if (WiFi.status() == WL_NO_MODULE) {
+    Serial.println("Communication with WiFi module failed!");
+    // don't continue
+    while (true);
+  }
+
+  String fv = WiFi.firmwareVersion();
+  if (fv < WIFI_FIRMWARE_LATEST_VERSION) {
+    Serial.println("Please upgrade the firmware");
+  }
+
+  // attempt to connect to Wifi network:
+  while (status != WL_CONNECTED) {
+
+    Serial.print("Attempting to connect to Network named: ");
+    Serial.println(myhomessid);                   // print the network name (SSID);
+
+    // force a static IP address
+    WiFi.config(IPAddress(MYHOME_IP_OCT1, MYHOME_IP_OCT2, MYHOME_IP_OCT3, MYHOME_IP_OCT4));
+
+    // Connect to WPA/WP17 network. Change this line if using open or WEP network:
+    status = WiFi.begin(myhomessid, myhomepassword);
+
+    // wait 5 seconds for connection while flashing on board LED
+    waitForWifi();
+  }
+
+  // start the server and send the user the connection information
+  server.begin();                           // start the web server on port 80
+  printWifiStatus();                        // you're connected now, so print out the status
+
+  // LED on to indicate we have a wifi connection
+  digitalWrite(LED_BUILTIN, HIGH);
+}
+
 void loop() {
   // listen for incoming clients
   // i.e. waiting for someone to connect to our static IP Address as define above
@@ -296,26 +312,21 @@ void loop() {
     int postVarsCount = 0;
     String postVars[2] = {};  //0 = Row, 1 = Action
 
-    //int empty_line_count = 0;
     while (client.connected()) 
     {
       if (client.available()) {
         char c = client.read();
-        //Serial.write(c);
         req_str += c;
 
         // if you've gotten to the end of the line (received a newline
         // character) and the line is blank, the http request has ended,
-        // so you can send a reply       
-        if (c == '\n' && currentLineIsBlank && req_str.startsWith("GET")) {
+        // so you can send a reply = send the initial page with the default values
+        if (c == '\n' && currentLineIsBlank && req_str.startsWith("GET")) {  
           writeResponse(client);
+          Serial.print("Response1:");
+          Serial.println(rsp_str);
           break;
-        }
-        
-        if (c == '\n' && currentLineIsBlank && req_str.startsWith("POST") && !skip) {
-          writeResponse(client);
-          break;
-        }  
+        } 
          
         if (c == '\n' && currentLineIsBlank && req_str.startsWith("POST") && skip) {
           // indicate we have processed this post
@@ -350,7 +361,7 @@ void loop() {
           }
           postVars[postVarsCount] = rsp_var;  
 
-          Serial.print("Response:");
+          Serial.print("Response3:");
           Serial.println(rsp_str);
           Serial.print("Post Vars Count:");
           Serial.println(postVarsCount + 1);
@@ -470,7 +481,9 @@ void loop() {
          } 
 
           // end while loop we have processed the post data
+          // resend the page but this time we will have an update state value
           writeResponse(client);
+
           break;
         }
 
@@ -484,6 +497,7 @@ void loop() {
       }
     }
 
+    Serial.print("Response4:");
     Serial.println(req_str);
 
     // give the web browser time to receive the data

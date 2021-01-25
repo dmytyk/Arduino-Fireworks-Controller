@@ -1,25 +1,25 @@
 # Arduino Fireworks Controller
 
 ### Arduino MKR WiFi 1010 Web Based Fireworks Controller
-My family and I love Fireworks, I love to build things with Arduino products so why not combine the two and build an Arduino Fireworks Controller.
+My family and I love Fireworks and I love to build things with Arduino products so why not combine the two and build an Arduino based Fireworks Controller.
  I know there are lots of commercial products available and I am sure there are several micro controller products already as well, but hey one more can't hurt.
 
 ### Prerequisites
 > - Skills and Tools to read a schematic and build circuits (not too hard, there are lots tutorials and information available on-line), BTW with all this COVID stuff your just sitting around anyway so don't let fear or time stop you
 > - A few extra bucks, I spent around 70 bucks, but I'm sure you can reduce the cost
-> - Know the range of the WiFi network you are using (you don't want to lose your connection at show time)
-> - Computer, WiFi connection, some programming skills and lots & lots of Ignitor's, Fuse and Fireworks
+> - Test the range of the WiFi network you are using (you don't want to lose your connection at show time)
+> - Lots & lots of Ignitor's, Fuse and Fireworks
 > 
 ### Old School Method
 I would lay out different fireworks and effects one row at a time. At show time I would get up from my chair light the row, run back to my chair, then do that again and again, you get the picture.  Lighting fireworks is fun but sitting back with a cocktail and enjoying the show with the family is lot more fun (hey what's wrong with mixing booze and explosives, really what could go wrong)!
 
-### Fancy Pants Arduino Method
-Build a Web Based controller that would fire off several rows, one at a time as I directed, while sitting with the family and enjoying the show together.
+### Arduino Method
+Build a Web Based controller that would fire off several rows, one at a time as I directed, while sitting with the family and enjoying the show.
 
-> #### The Fireworks Controller provides the operator with a very simple WEB based interface that allows the user to
+> #### The Controller provides the operator with a very simple WEB based interface that allows the user to
 > - Connect to the controller by simple entering its IP address in your browsers URL bar (I used my IPhone)
-> - Click on and enter the row you want to fire off
-> - Arm the row (a little safety since you were probably drinking all day)
+> - Click on and enter the row you want to fire
+> - Arm the row (a little safety never hurts since you were probably drinking)
 > - Click on Fire and enjoy
 
 ### Here's the Final Product
@@ -37,7 +37,11 @@ Build a Web Based controller that would fire off several rows, one at a time as 
 
 4. Component Layout
 
- ![Component](/Images/Component_Layout.jpg)
+![Component](/Images/Component_Layout.jpg)
+
+5. Setting Up 
+
+![Component](/Images/Fireworks_Setup.png)
 
 ### Electrical Schematic
 1. Components and a Fantastic tool to create Schematics can be found at: [Digi-Key](https://www.digikey.com/schemeit/home)
@@ -161,9 +165,9 @@ void loop() {
     int postVarsCount = 0;
     String postVars[2] = {};  //0 = Row, 1 = Action
 ```
-- While we have a connection and the client is available, start process the Initial GET request by sending it the initial web page *(writeResponse(client));*
-- The Web Page has a form that send the server two parameters (row=xx AND action=SETROW) xx is the row number and action is the action to take
-- The Fire Button calls *plusePin* this function caused Arduino to make the selected row go active high for 1 second, this turns on the MOSFET which completes the connection of the ignitor to the +12v battery thereby lighting the fuse  
+- While we have a connection and the client is available, start process the Initial GET request by sending out the web page *(writeResponse(client));*
+- The Web Page has a form that sends the server two parameters (row=xx AND action=SETROW) xx is the row number and action is the action to take
+- The Fire Button calls *plusePin* this function caused Arduino to make the selected row go active high for 1 second, this turns on the MOSFET which completes the connection between the ignitor to the +12v battery thereby lighting the fuse  
 ```shell
     while (client.connected()) 
     {
@@ -368,9 +372,12 @@ void loop() {
  - Bring All LEDS to the outside cover
  - Add a voltage divider circuit with code monitor along with a Low Voltage LED (today I use a volt meter between ST6 pin 1 and GND)
 
-## Now What
+## Next Up
 This was my first published product.  I built this last year, since then I have learned a lot, A WHOLE LOT.  I'm currently working on:
-> - A Remote Control Tank includes: Upgraded WEB server interface that includes a continuous websocket connection for fast command processing, a 20W Burning Laser and Optional servo controlled Claw 
+> - A Remote Control Tank which includes: Upgraded WEB server interface with a continuous websocket connection for fast command processing, a 20W Burning Laser and Optional servo controlled Claw 
 > - A bottle rocket launcher attachment for a Drone
 > - A Paratrooper dropping device an RC airplane 
-> - A cool GEO cache device (because my grandkids love to find them)
+> - A cool GEO cache device (my grandkids love to find them)
+> - Several cool Arduino tutorials for Software Interrupts, Background Processing, Board to Board communication, Pulse Simulation, Websites using Base64 to save code space and some other Fun stuff TBD 
+
+Follow me on [YouTube](https://www.youtube.com/channel/UCgu_aWvmKPHFhXgSWBCj7EA) 

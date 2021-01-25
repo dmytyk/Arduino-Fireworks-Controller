@@ -380,4 +380,4 @@ This was my first published product.  I built this last year, since then I have 
 > - A cool GEO cache device (my grandkids love to find them)
 > - Several cool Arduino tutorials for Software Interrupts, Background Processing, Board to Board communication, Pulse Simulation, Websites using Base64 to save code space and some other Fun stuff TBD 
 
-Follow me on [YouTube](https://www.youtube.com/channel/UCgu_aWvmKPHFhXgSWBCj7EA) 
+Follow me on [YouTube](https://www.youtube.com/channel/UCgu_aWvmKPHFhXgSWBCj7EA) to catch the Next Up Stuff

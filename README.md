@@ -39,9 +39,13 @@ Build a Web Based controller that would fire off several rows, one at a time as 
 
 ![Component](/Images/Component_Layout.jpg)
 
-5. Setting Up 
+5. Setting Up
 
 ![Component](/Images/Fireworks_Setup.png)
+
+6. Application Screen
+
+![Component](/Images/Fireworks_App.png)
 
 ### Electrical Schematic
 1. Components and a Fantastic tool to create Schematics can be found at: [Digi-Key](https://www.digikey.com/schemeit/home)
@@ -368,9 +372,10 @@ void loop() {
 ```
 
 ## Future Enhancements
- - Add a Connection status LED
- - Bring All LEDS to the outside cover
- - Add a voltage divider circuit with code monitor along with a Low Voltage LED (today I use a volt meter between ST6 pin 1 and GND)
+ - Add a Connection strength status LED/Display to ensure we are with in range of our WiFi 
+ - Bring the internal LEDS to the outside cover se we can see the lights for monitoring, they will look cool
+ - Add a voltage divider circuit and code to monitor the battery voltage, so we know when the battery is low and needs charging
+ - Add a Low Voltage LED to go along with the voltage monitor
 
 ## Next Up
 This was my first published product.  I built this last year, since then I have learned a lot, A WHOLE LOT.  I'm currently working on:
@@ -380,4 +385,4 @@ This was my first published product.  I built this last year, since then I have 
 > - A cool GEO cache device (my grandkids love to find them)
 > - Several cool Arduino tutorials for Software Interrupts, Background Processing, Board to Board communication, Pulse Simulation, Websites using Base64 to save code space and some other Fun stuff TBD 
 
-Follow me on [YouTube](https://www.youtube.com/channel/UCgu_aWvmKPHFhXgSWBCj7EA) to catch the Next Up Stuff
+Please follow me on [YouTube](https://www.youtube.com/channel/UCgu_aWvmKPHFhXgSWBCj7EA) to catch the Next Up Stuff

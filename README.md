@@ -8,7 +8,7 @@ My family and I love Fireworks and I love to build things with Arduino products 
 > - Skills and Tools to read a schematic and build circuits (not too hard, there are lots tutorials and information available on-line), BTW with all this COVID stuff your just sitting around anyway so don't let fear or time stop you
 > - A few extra bucks, I spent around 70 bucks, but I'm sure you can reduce the cost
 > - Test the range of the WiFi network you are using (you don't want to lose your connection at show time)
-> - Lots & lots of Ignitor's, Fuse and Fireworks
+> - Ignitor's, Fuse and Lot's and Lot's of Fireworks
 > 
 ### Old School Method
 I would lay out different fireworks and effects one row at a time. At show time I would get up from my chair light the row, run back to my chair, then do that again and again, you get the picture.  Lighting fireworks is fun but sitting back with a cocktail and enjoying the show with the family is lot more fun (hey what's wrong with mixing booze and explosives, really what could go wrong)!
@@ -29,7 +29,8 @@ Build a Web Based controller that would fire off several rows, one at a time as 
 
 2. Connections Ignitor / Charger
 
- ![Connections](/Images/Connections.JPG)
+![Connections](/Images/Connections.JPG)
+![Connections_Test](/Images/Connection_Test.JPG)
 
 3. Charging Up
 
@@ -46,6 +47,10 @@ Build a Web Based controller that would fire off several rows, one at a time as 
 6. Application Screen
 
 ![Component](/Images/Fireworks_App.png)
+
+7. Test Fire
+
+![TestFire](/Images/Test_Fire.png)
 
 ### Electrical Schematic
 1. Components and a Fantastic tool to create Schematics can be found at: [Digi-Key](https://www.digikey.com/schemeit/home)

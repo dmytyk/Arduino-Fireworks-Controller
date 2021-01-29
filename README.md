@@ -6,7 +6,7 @@ My family and I love Fireworks and I love to build things with Arduino products 
 
 ### Prerequisites
 > - Skills and Tools to read a schematic and build circuits (not too hard, there are lots tutorials and information available on-line), BTW with all this COVID stuff your just sitting around anyway so don't let fear or time stop you
-> - A few extra bucks, I spent around 70 bucks, but I'm sure you can reduce the cost
+> - A few extra bucks, I spent around 50 bucks, but I'm sure you can reduce the cost
 > - Test the range of the WiFi network you are using (you don't want to lose your connection at show time)
 > - Ignitor's, Fuse and Lot's and Lot's of Fireworks
 > 

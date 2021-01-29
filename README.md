@@ -30,7 +30,8 @@ Build a Web Based controller that would fire off several rows, one at a time as 
 2. Connections Charger & Igniter
 
 ![Connections](/Images/Connections.JPG)
-![Connections_Test](/Images/Connections_Test.JPG)
+![Connections Test](/Images/Connections_Test.JPG)
+![Test Fire](https://www.youtube.com/watch?v=j5TMe5pu_uM)
 
 3. Charging Up
 

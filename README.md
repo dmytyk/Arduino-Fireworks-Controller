@@ -30,7 +30,7 @@ Build a Web Based controller that would fire off several rows, one at a time as 
 2. Connections Ignitor / Charger
 
 ![Connections](/Images/Connections.JPG)
-![Connections_Test](/Images/Connection_Test.JPG)
+![Connections_Test](/Images/Connections_Test.JPG)
 
 3. Charging Up
 
@@ -50,7 +50,7 @@ Build a Web Based controller that would fire off several rows, one at a time as 
 
 7. Test Fire
 
-![TestFire](/Images/Test_Fire.png)
+![TestFire](/Images/Test_Fire.mp4)
 
 ### Electrical Schematic
 1. Components and a Fantastic tool to create Schematics can be found at: [Digi-Key](https://www.digikey.com/schemeit/home)

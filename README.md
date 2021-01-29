@@ -27,7 +27,7 @@ Build a Web Based controller that would fire off several rows, one at a time as 
    
  ![Front View](/Images/Front.JPG)
 
-2. Connections Ignitor / Charger
+2. Connections Charger & Igniter
 
 ![Connections](/Images/Connections.JPG)
 ![Connections_Test](/Images/Connections_Test.JPG)
@@ -47,10 +47,6 @@ Build a Web Based controller that would fire off several rows, one at a time as 
 6. Application Screen
 
 ![Component](/Images/Fireworks_App.png)
-
-7. Test Fire
-
-![TestFire](/Images/Test_Fire.mp4)
 
 ### Electrical Schematic
 1. Components and a Fantastic tool to create Schematics can be found at: [Digi-Key](https://www.digikey.com/schemeit/home)

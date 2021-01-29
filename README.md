@@ -17,9 +17,9 @@ I would lay out different fireworks and effects one row at a time. At show time 
 Build a Web Based controller that would fire off several rows, one at a time as I directed, while sitting with the family and enjoying the show.
 
 > #### The Controller provides the operator with a very simple WEB based interface that allows the user to
-> - Connect to the controller by simple entering its IP address in your browsers URL bar (I used my IPhone)
+> - Connect to the controller by simple entering its IP address in your browsers URL bar (I use my IPhone)
 > - Click on and enter the row you want to fire
-> - Arm the row (a little safety never hurts since you were probably drinking)
+> - Arm the row (a little safety never hurts)
 > - Click on Fire and enjoy
 
 ### Here's the Final Product
@@ -374,16 +374,16 @@ void loop() {
 
 ## Future Enhancements
  - Add a Connection strength status LED/Display to ensure we are with in range of our WiFi 
- - Bring the internal LEDS to the outside cover se we can see the lights for monitoring, they will look cool
- - Add a voltage divider circuit and code to monitor the battery voltage, so we know when the battery is low and needs charging
+ - Bring the internal LEDS to the outside cover se we can see the lights for monitoring and troubleshooting, they will also look cool too
+ - Add a circuit and code to monitor the battery voltage, so we know when the battery is low and needs charging
  - Add a Low Voltage LED to go along with the voltage monitor
 
 ## Next Up
-This was my first published product.  I built this last year, since then I have learned a lot, A WHOLE LOT.  I'm currently working on:
+This was my first published product.  I built this last year, since then I have learned a lot, A WHOLE LOT!  I'm currently working on:
 > - A Remote Control Tank which includes: Upgraded WEB server interface with a continuous websocket connection for fast command processing, a 20W Burning Laser and Optional servo controlled Claw 
 > - A bottle rocket launcher attachment for a Drone
-> - A Paratrooper dropping device an RC airplane 
+> - A Paratrooper dropping device an RC airplane / Drone
 > - A cool GEO cache device (my grandkids love to find them)
 > - Several cool Arduino tutorials for Software Interrupts, Background Processing, Board to Board communication, Pulse Simulation, Websites using Base64 to save code space and some other Fun stuff TBD 
 
-Please follow me on [YouTube](https://www.youtube.com/channel/UCgu_aWvmKPHFhXgSWBCj7EA) to catch the Next Up Stuff
+Please follow me on [YouTube](https://www.youtube.com/channel/UCgu_aWvmKPHFhXgSWBCj7EA) to catch the "Next Up Stuff"

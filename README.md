@@ -59,7 +59,7 @@ Build a Web Based controller that would fire off several rows, one at a time as 
 
 I'll assume your still with me, you have your Controller assembled and powered on (not smoking of course - that would be real bad when dealing with fireworks). Before you save the code to your Arduino we need to do a little network setup.
 
-### Network Setup
+### Network Configuration
  - You need to configure your network settings and IP address.  
 *network_parameters.h* - defines the network settings your controller needs 
 ```sh

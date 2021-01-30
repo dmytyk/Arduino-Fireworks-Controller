@@ -32,7 +32,7 @@ Build a Web Based controller that would fire off several rows, one at a time as 
 ![Connections](/Images/Connections.JPG)
 ![Connections Test](/Images/Connections_Test.JPG)
 
-[Test Fire Video](https://www.youtube.com/watch?v=j5TMe5pu_uM)
+[Test Fire Video](https://www.youtube.com/watch?v=jbwtu5NrySM)
 
 3. Charging Up
 
@@ -381,11 +381,11 @@ void loop() {
  - Add a Low Voltage LED to go along with the voltage monitor
 
 ## Next Up
-This was my first published product.  I built this last year, since then I have learned a lot, A WHOLE LOT!  I'm currently working on:
+I built this last year, since then I have learned a lot, A WHOLE LOT!  I'm currently working on:
 > - A Remote Control Tank which includes: Upgraded WEB server interface with a continuous websocket connection for fast command processing, a 20W Burning Laser and Optional servo controlled Claw 
 > - A bottle rocket launcher attachment for a Drone
 > - A Paratrooper dropping device an RC airplane / Drone
 > - A cool GEO cache device (my grandkids love to find them)
 > - Several cool Arduino tutorials for Software Interrupts, Background Processing, Board to Board communication, Pulse Simulation, Websites using Base64 to save code space and some other Fun stuff TBD 
 
-Please follow me on [YouTube](https://www.youtube.com/channel/UCgu_aWvmKPHFhXgSWBCj7EA) to catch the "Next Up Stuff"
+Please follow me on [YouTube](https://www.youtube.com/channel/UClwcP7ByE6Ia9DmKfP0C-UQ) to catch the "Next Up Stuff"
